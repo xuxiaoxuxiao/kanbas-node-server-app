@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/xuxiaoxuxiao/kanbas-node-server-app/issues"
   },
-  "homepage": "https://github.com/xuxiaoxuxiao/kanbas-node-server-app#readme"
+  "homepage": "https://github.com/xuxiaoxuxiao/kanbas-node-server-app#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
