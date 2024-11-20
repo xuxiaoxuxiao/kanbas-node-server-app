@@ -7,9 +7,9 @@ export function deleteCourse(courseId) {
     (enrollment) => enrollment.course !== courseId
 );}
 
-export function findAllCourses() {
-  return Database.courses;
-}
+// export function findAllCourses() {
+//   return Database.courses;
+// }
 export function findCoursesForEnrolledUser(userId) {
     const { courses, enrollments } = Database;
     const enrolledCourses = courses.filter((course) =>
