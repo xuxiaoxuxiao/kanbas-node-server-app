@@ -7,14 +7,13 @@ import model from "./model.js";
 //     (enrollment) => enrollment.course !== courseId
 // );}
 
+export function findAllCourses() {
+  return model.find();
+}
 export function deleteCourse(courseId) {
   return model.deleteOne({ _id: courseId });
  }
  
-
-export function findAllCourses() {
-  return model.find();
-}
 export function findCoursesForEnrolledUser(userId) {
     const { courses, enrollments } = Database;
     const enrolledCourses = courses.filter((course) =>

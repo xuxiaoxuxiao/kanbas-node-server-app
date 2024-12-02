@@ -35,11 +35,12 @@ mongoose.connect(CONNECTION_STRING);
 
   
 app.use(express.json()) // do all your work after this line
-CourseRoutes(app);
+
 Lab5(app)
 Hello(app)
 UserRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app); 
+CourseRoutes(app);
 app.listen(process.env.PORT || 4000)
