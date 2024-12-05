@@ -1,15 +1,27 @@
 import model from "./model.js";
-export async function findCoursesForUser(userId) {
-  const enrollments = await model.find({ user: userId }).populate("course");
-  return enrollments.map((enrollment) => enrollment.course);
-}
-export async function findUsersForCourse(courseId) {
-  const enrollments = await model.find({ course: courseId }).populate("user");
-  return enrollments.map((enrollment) => enrollment.user);
-}
+import mongoose from "mongoose";
+
 export function enrollUserInCourse(user, course) {
   return model.create({ user, course });
 }
-export function unenrollUserFromCourse(user, course) {
-  return model.deleteOne({ user, course });
+
+export async function unenrollUserInCourse(user, course) {
+  const result = await model.deleteOne({ user: user, course: course });
+  if (result.deletedCount > 0) {
+    return 200
+  } else {
+    return 500
+  }
+}
+
+export async function findCoursesForUser(userId) {
+  const objectIdUser = mongoose.Types.ObjectId.isValid(userId)
+    ? mongoose.Types.ObjectId.createFromHexString(userId)
+    : userId;
+  const enrollments = await model.find({ user: objectIdUser }).populate("course");
+  return enrollments.map((enrollment) => enrollment.course);
+}
+
+export function findAllEnrollments() {
+  model.find()
 }
